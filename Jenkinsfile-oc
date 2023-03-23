@@ -40,19 +40,7 @@ pipeline {
           }
         }
       }
-    }
-    stage('Delete') {
-      steps {
-        echo "Delete application"
-        script {
-          openshift.withCluster() {
-            openshift.withProject("${env.PROJECT}") {
-              openshift.selector("all", [  'app' : 'springclient' ]).delete()
-            }
-          }
-        }
-      }
-    }
+    }    
     stage('Deploy') {
       steps {
         echo "Deploy application"
